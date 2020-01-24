@@ -4,7 +4,7 @@ const initialState = {
   isProcessing: false,
   isNarrowMode: false,
   tabs: [
-    { category: "ダッシュボード", pages: [{ id: "dashboard", name: "ダッシュボード" }] },
+    { category: "ダッシュボード", pages: [{ id: "", name: "ダッシュボード" }] },
     {
       category: "KB管理",
       pages: [

@@ -6,9 +6,11 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { configureStore } from "./store";
 
+const basename = "react-faq-tool";
+
 ReactDOM.render(
   <Provider store={configureStore()}>
-    <Router>
+    <Router basename={basename}>
       <App />
     </Router>
   </Provider>,
