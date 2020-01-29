@@ -8,7 +8,14 @@ const mapStateToProps = (state: any) => {
 };
 
 const mapDispatchToProps = (dispatch: any) => {
-  return {};
+  return {
+    // getMaster: () => dispatch(closeErrDialog()),
+    getMaster: () =>
+      dispatch({
+        type: "GET_MASTER",
+        payload: { isOk: true }
+      })
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(GlobalHeader);

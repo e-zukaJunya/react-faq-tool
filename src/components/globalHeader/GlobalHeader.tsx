@@ -20,7 +20,8 @@ const GlobalHeader: React.FC = (props: any) => {
       <AppBar position="relative">
         <Toolbar>
           {/* ハンバーガーメニュー */}
-          <IconButton edge="start" className={""} color="inherit" aria-label="menu" onClick={() => setOpen(!open)}>
+          {/* <IconButton edge="start" className={""} color="inherit" aria-label="menu" onClick={() => setOpen(!open)}> */}
+          <IconButton edge="start" className={""} color="inherit" aria-label="menu" onClick={() => props.getMaster()}>
             <MenuIcon />
           </IconButton>
           {/* タイトル */}
