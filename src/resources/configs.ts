@@ -3,8 +3,6 @@ export const URLS = {
   BASE: "http://localhost:3100/"
 };
 
-console.log(process.env.REACT_APP_MY_ENV);
-console.log(process.env.REACT_APP_MY_ENV?.trim() === "local");
 //アプリの設定
 export const APP_CONFIGS = {
   //開発時フラグ

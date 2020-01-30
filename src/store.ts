@@ -1,18 +1,18 @@
 import * as redux from "redux";
 import { createLogger } from "redux-logger";
 import createSagaMiddleware from "redux-saga";
-import common from "./reducers/common";
-// import { APP_CONFIGS } from "./Resourses/Configs";
+import common from "./modules/common";
+import error from "./modules/error";
+import { APP_CONFIGS } from "./resources/configs";
 import rootSaga from "./sagas/root";
 
-const rootReducer = redux.combineReducers({ common });
+export const rootReducer = redux.combineReducers({ common, error });
 
 // いろんな型のミドルウェアを登録するためここはany
 const middlewares: any = [];
 
 //開発時のみredux-loggerを適用
-// if (APP_CONFIGS.IS_DEVELOP) {
-if (true) {
+if (APP_CONFIGS.IS_DEVELOP) {
   //loggerオブジェクトの生成
   const logger = createLogger({
     diff: true,

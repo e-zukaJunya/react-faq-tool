@@ -1,41 +1,7 @@
-import axios from "axios";
 import { call, put, takeLatest } from "redux-saga/effects";
-import { URLS } from "../resources/config";
-// import { endProcess, startProcess } from "../../Actions/Common";
-// import { openErrDialog } from "../../Actions/Error";
-// import { getToiletInfoFailure, getToiletInfoSuccess } from "../../Actions/UsageStats";
-// import { USAGE_STATS_ACTIONS } from "../../Resourses/ActionTypes";
-// import { APP_CONFIGS, URLS } from "../../Resourses/Configs";
+import { postByAxios } from "./request";
+import { COMMON_ACTIONS } from "../modules/common";
 // import { ERR_MESSAGES, ERR_TITLES } from "../../Resourses/Messages";
-
-const baseUrl = "http://localhost:3100/";
-const axiosInstance = axios.create({
-  baseURL: URLS.BASE
-});
-
-// GET
-const getByAxios = async (url: string, { headers = {}, params = {} } = {}) => {
-  return axios
-    .get(url, { headers, params })
-    .then(res => {
-      return { res };
-    })
-    .catch(err => {
-      return { err };
-    });
-};
-
-// POST
-const postByAxios = async (url: string, body: object, { headers = {}, params = {} } = {}) => {
-  return axiosInstance
-    .post(url, body, { headers, params })
-    .then((res: any) => {
-      return { res };
-    })
-    .catch((err: any) => {
-      return { err };
-    });
-};
 
 function* getMaster(action: any) {
   //プログレスリングの開始
@@ -62,4 +28,4 @@ function* getMaster(action: any) {
   }
 }
 
-export const apiReqs = [takeLatest("GET_MASTER", getMaster)];
+export const master = [takeLatest(COMMON_ACTIONS.GET_MASTER, getMaster)];

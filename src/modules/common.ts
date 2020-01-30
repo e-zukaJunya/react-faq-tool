@@ -1,5 +1,37 @@
-// import { COMMON_ACTIONS } from '../Resourses/ActionTypes';
+// actions
+export const COMMON_ACTIONS = {
+  START_PROCESS: "START_PROCESS",
+  END_PROCESS: "END_PROCESS",
+  SWITCH_NARROW_MODE: "SWITCH_NARROW_MODE",
+  GET_MASTER: "GET_MASTER"
+};
 
+// action creaters
+export const getMaster = () => {
+  return {
+    type: "GET_MASTER",
+    payload: { isOk: true }
+  };
+};
+
+export const startProgress = () => {
+  return {
+    type: COMMON_ACTIONS.START_PROCESS
+  };
+};
+
+export const endProgress = () => {
+  return {
+    type: COMMON_ACTIONS.END_PROCESS
+  };
+};
+
+type ActionTypes =
+  | ReturnType<typeof getMaster>
+  | ReturnType<typeof startProgress>
+  | ReturnType<typeof endProgress>;
+
+// reducer
 const initialState = {
   isProcessing: false,
   isNarrowMode: false,
@@ -19,30 +51,26 @@ const initialState = {
   ]
 };
 
-const common = (state = initialState, action: any) => {
+const common = (state = initialState, action: ActionTypes) => {
   switch (action.type) {
     //プログレスリングの開始
-    // case COMMON_ACTIONS.START_PROCESS:
-    case "START_PROCESS":
+    case COMMON_ACTIONS.START_PROCESS:
       return {
         ...state,
         isProcessing: true
       };
-
     //プログレスリングの終了
-    case "END_PROCESS":
+    case COMMON_ACTIONS.END_PROCESS:
       return {
         ...state,
         isProcessing: false
       };
-
     //画面幅による表示モードの切り替え
-    case "SWITCH_NARROW_MODE":
+    case COMMON_ACTIONS.SWITCH_NARROW_MODE:
       return {
         ...state,
-        isNarrowMode: action.payload.isNarrowMode
+        isNarrowMode: !state.isNarrowMode
       };
-
     default:
       return {
         ...state
