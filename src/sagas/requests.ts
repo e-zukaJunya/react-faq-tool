@@ -5,9 +5,9 @@ const axiosInstance = axios.create({
   baseURL: URLS.BASE
 });
 
-export const getByAxios = async (url: string, { headers = {}, params = {} } = {}) => {
+export const getByAxios = async <T>(url: string, { headers = {}, params = {} } = {}) => {
   return axiosInstance
-    .get(url, { headers, params })
+    .get<T>(url, { headers, params })
     .then(res => {
       return { res };
     })
@@ -16,7 +16,11 @@ export const getByAxios = async (url: string, { headers = {}, params = {} } = {}
     });
 };
 
-export const postByAxios = async (url: string, body: object, { headers = {}, params = {} } = {}) => {
+export const postByAxios = async (
+  url: string,
+  body: object,
+  { headers = {}, params = {} } = {}
+) => {
   return axiosInstance
     .post(url, body, { headers, params })
     .then((res: any) => {
@@ -38,7 +42,11 @@ export const putByAxios = async (url: string, body: object, { headers = {}, para
     });
 };
 
-export const patchByAxios = async (url: string, body: object, { headers = {}, params = {} } = {}) => {
+export const patchByAxios = async (
+  url: string,
+  body: object,
+  { headers = {}, params = {} } = {}
+) => {
   return axiosInstance
     .patch(url, body, { headers, params })
     .then((res: any) => {

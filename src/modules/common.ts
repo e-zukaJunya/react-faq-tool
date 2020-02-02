@@ -1,15 +1,15 @@
 // actions
 export const COMMON_ACTIONS = {
-  START_PROCESS: "START_PROCESS",
-  END_PROCESS: "END_PROCESS",
-  SWITCH_NARROW_MODE: "SWITCH_NARROW_MODE",
-  GET_MASTER: "GET_MASTER"
+  START_PROCESS: "START_PROCESS" as const,
+  END_PROCESS: "END_PROCESS" as const,
+  SWITCH_NARROW_MODE: "SWITCH_NARROW_MODE" as const,
+  GET_MASTER: "GET_MASTER" as const
 };
 
 // action creaters
 export const getMaster = () => {
   return {
-    type: "GET_MASTER",
+    type: COMMON_ACTIONS.GET_MASTER,
     payload: { isOk: true }
   };
 };
@@ -20,19 +20,28 @@ export const startProgress = () => {
   };
 };
 
+export const switchDispMode = () => {
+  return {
+    type: COMMON_ACTIONS.SWITCH_NARROW_MODE
+  };
+};
+
 export const endProgress = () => {
   return {
     type: COMMON_ACTIONS.END_PROCESS
   };
 };
 
-type ActionTypes =
-  | ReturnType<typeof getMaster>
-  | ReturnType<typeof startProgress>
-  | ReturnType<typeof endProgress>;
+type ActionTypes = ReturnType<typeof getMaster | typeof startProgress | typeof endProgress | typeof switchDispMode>;
 
 // reducer
-const initialState = {
+type StateTypes = {
+  isProcessing: boolean;
+  isNarrowMode: boolean;
+  tabs: any[];
+};
+
+const initialState: StateTypes = {
   isProcessing: false,
   isNarrowMode: false,
   tabs: [
@@ -51,7 +60,7 @@ const initialState = {
   ]
 };
 
-const common = (state = initialState, action: ActionTypes) => {
+const common = (state = initialState, action: ActionTypes): StateTypes => {
   switch (action.type) {
     //プログレスリングの開始
     case COMMON_ACTIONS.START_PROCESS:
@@ -71,10 +80,13 @@ const common = (state = initialState, action: ActionTypes) => {
         ...state,
         isNarrowMode: !state.isNarrowMode
       };
-    default:
+    case "GET_MASTER":
       return {
-        ...state
+        ...state,
+        isProcessing: action.payload.isOk
       };
+    default:
+      return state;
   }
 };
 

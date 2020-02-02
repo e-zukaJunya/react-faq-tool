@@ -1,5 +1,5 @@
 import { call, put, takeLatest } from "redux-saga/effects";
-import { postByAxios } from "./request";
+import { postByAxios } from "./requests";
 import { COMMON_ACTIONS } from "../modules/common";
 // import { ERR_MESSAGES, ERR_TITLES } from "../../Resourses/Messages";
 
@@ -28,4 +28,4 @@ function* getMaster(action: any) {
   }
 }
 
-export const master = [takeLatest(COMMON_ACTIONS.GET_MASTER, getMaster)];
+export const masters = [takeLatest(COMMON_ACTIONS.GET_MASTER, getMaster)];

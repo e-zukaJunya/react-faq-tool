@@ -5,12 +5,11 @@ import { BrowserRouter as Router } from "react-router-dom";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { configureStore } from "./store";
-
-const basename = "react-faq-tool";
+import { URLS } from "./resources/configs";
 
 ReactDOM.render(
   <Provider store={configureStore()}>
-    <Router basename={basename}>
+    <Router basename={URLS.SUB}>
       <App />
     </Router>
   </Provider>,

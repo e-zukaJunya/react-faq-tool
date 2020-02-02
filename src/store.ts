@@ -3,10 +3,11 @@ import { createLogger } from "redux-logger";
 import createSagaMiddleware from "redux-saga";
 import common from "./modules/common";
 import error from "./modules/error";
+import setting from "./modules/setting";
 import { APP_CONFIGS } from "./resources/configs";
 import rootSaga from "./sagas/root";
 
-export const rootReducer = redux.combineReducers({ common, error });
+export const rootReducer = redux.combineReducers({ common, error, setting });
 
 // いろんな型のミドルウェアを登録するためここはany
 const middlewares: any = [];
