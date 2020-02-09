@@ -5,12 +5,12 @@ export const ERROR_ACTIONS = {
 };
 
 // action creaters
-export const openErrDialog = () => {
+export const openErrDialog = (title: string, msg: string) => {
   return {
     type: ERROR_ACTIONS.OPEN_ERR_DIALOG,
     payload: {
-      errTitle: "えらー",
-      errMsg: "えらー起きてる"
+      title,
+      msg
     }
   };
 };
@@ -43,8 +43,8 @@ const error = (state = initialState, action: ActionTypes): StateTypes => {
       return {
         ...state,
         openErrDialog: true,
-        errMsg: action.payload.errMsg,
-        errTitle: action.payload.errTitle
+        errMsg: action.payload.msg,
+        errTitle: action.payload.title
       };
     //エラーダイアログを非表示
     case ERROR_ACTIONS.CLOSE_ERR_DIALOG:

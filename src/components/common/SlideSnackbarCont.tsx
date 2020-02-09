@@ -1,24 +1,25 @@
+import { Color } from "@material-ui/lab/Alert";
 import { connect } from "react-redux";
 import { Action, Dispatch } from "redux";
-import { getSettings, updateSettings, Setting } from "../../modules/setting";
+import { hideSnackBar, showSnackBar } from "../../modules/common";
 import { rootReducer } from "../../store";
-import Settings from "./Settings";
+import SlideSnackbar from "./SlideSnackbar";
 
 const mapStateToProps = (state: ReturnType<typeof rootReducer>) => {
   return {
-    settings: state.setting.settings,
-    isLoading: state.setting.isLoading
+    severity: state.common.snackBarSeverity,
+    open: state.common.showSnackBar
   };
 };
 
 const mapDispatchToProps = (dispatch: Dispatch<Action<string>>) => {
   return {
-    getSettings: () => dispatch(getSettings()),
-    updateSettings: (data: Setting) => dispatch(updateSettings(data))
+    showSnackBar: (severity: Color) => dispatch(showSnackBar(severity)),
+    hideSnackBar: () => dispatch(hideSnackBar())
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Settings);
+export default connect(mapStateToProps, mapDispatchToProps)(SlideSnackbar);
 
 type StateProps = ReturnType<typeof mapStateToProps>;
 type DispatchProps = ReturnType<typeof mapDispatchToProps>;

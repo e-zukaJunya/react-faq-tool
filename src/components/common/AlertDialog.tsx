@@ -35,7 +35,7 @@ const AlertDialog: React.FC<Props> = props => {
       >
         <DialogTitle id="alert-dialog-title">{"Use Google's location service?"}</DialogTitle>
         <DialogContent>
-          <DialogContentText id="alert-dialog-description">確認ダイアログ</DialogContentText>
+          <DialogContentText id="alert-dialog-description">アラートダイアログ</DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary" autoFocus>

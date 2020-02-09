@@ -1,24 +1,23 @@
 import { connect } from "react-redux";
 import { Action, Dispatch } from "redux";
-import { getSettings, updateSettings, Setting } from "../../modules/setting";
+import { getMaster } from "../../modules/common";
 import { rootReducer } from "../../store";
-import Settings from "./Settings";
+import KbApply from "./KbApply";
 
 const mapStateToProps = (state: ReturnType<typeof rootReducer>) => {
   return {
-    settings: state.setting.settings,
-    isLoading: state.setting.isLoading
+    tabs: state.common.showSnackBar,
+    severity: state.common.snackBarSeverity
   };
 };
 
 const mapDispatchToProps = (dispatch: Dispatch<Action<string>>) => {
   return {
-    getSettings: () => dispatch(getSettings()),
-    updateSettings: (data: Setting) => dispatch(updateSettings(data))
+    getMaster: () => dispatch(getMaster())
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Settings);
+export default connect(mapStateToProps, mapDispatchToProps)(KbApply);
 
 type StateProps = ReturnType<typeof mapStateToProps>;
 type DispatchProps = ReturnType<typeof mapDispatchToProps>;

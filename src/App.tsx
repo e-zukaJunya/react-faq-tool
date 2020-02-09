@@ -1,9 +1,10 @@
 import React from "react";
 import styles from "./app.module.scss";
 // import * as styles from "./app.module.scss";
-
-import Routes from "./components/Routes";
+import SlideSnackbar from "./components/common/SlideSnackbarCont";
 import GlobalHeader from "./components/globalHeader/GlobalHeaderCont";
+import Routes from "./components/Routes";
+
 
 const App: React.FC = () => {
   return (
@@ -12,6 +13,8 @@ const App: React.FC = () => {
       <GlobalHeader />
       {/* メインコンテンツ */}
       <Routes />
+      {/* スナックバー */}
+      <SlideSnackbar />
     </div>
   );
 };

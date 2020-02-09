@@ -6,7 +6,11 @@ import Table from "./Table";
 const Settings: React.FC<Props> = props => {
   return (
     <div>
-      <Table data={props.settings} />
+      <Table
+        data={props.settings}
+        isLoading={props.isLoading}
+        updateSettings={props.updateSettings}
+      />
       <Button onClick={props.getSettings}>サーバーからデータとってくる</Button>
     </div>
   );

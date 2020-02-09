@@ -3,8 +3,12 @@ import React from "react";
 import tableIcons from "../common/TableSettings";
 import { Setting } from "../../modules/setting";
 
+import DeleteOutline from "@material-ui/icons/DeleteOutline";
+import Edit from "@material-ui/icons/Edit";
 type Props = {
   data: Setting[];
+  isLoading: boolean;
+  updateSettings: (data: Setting) => void;
 };
 
 const Table: React.FC<Props> = props => {
@@ -14,53 +18,51 @@ const Table: React.FC<Props> = props => {
   //   { title: "設定値", field: "value" }
   // ]);
   const columns: Column<Setting>[] = [
-    // { field: "id"},
+    // { title: "ID", field: "id"},
     { title: "設定項目", field: "name", editable: "never" },
+    // { title: "設定項目", field: "name" },
     { title: "設定値", field: "value" }
   ];
 
   return (
     <MaterialTable
-      title="設定値"
       columns={columns}
       data={props.data}
       icons={tableIcons}
+      isLoading={props.isLoading}
+      options={{
+        draggable: false,
+        search: false,
+        sorting: false,
+        showTitle: false,
+        paging: false
+      }}
+      // actions={[
+      //   {
+      //     icon: () => <Edit />,
+      //     tooltip: "編集",
+      //     onClick: (event: any, data: any) => props.updateSettings(data)
+      //   }
+      // ]}
       editable={{
-        onRowAdd: newData =>
-          new Promise(resolve => {
-            setTimeout(() => {
-              resolve();
-              // setState((prevState: any) => {
-              //   const data = [...prevState.data];
-              //   data.push(newData);
-              //   return { ...prevState, data };
-              // });
-            }, 600);
-          }),
+        isEditable: () => true,
         onRowUpdate: (newData, oldData) =>
-          new Promise(resolve => {
-            setTimeout(() => {
-              resolve();
-              if (oldData) {
-                // setState((prevState: any) => {
-                //   const data = [...prevState.data];
-                //   data[data.indexOf(oldData)] = newData;
-                //   return { ...prevState, data };
-                // });
-              }
-            }, 600);
-          }),
-        onRowDelete: oldData =>
-          new Promise(resolve => {
-            setTimeout(() => {
-              resolve();
-              // setState((prevState: any) => {
-              //   const data = [...prevState.data];
-              //   data.splice(data.indexOf(oldData), 1);
-              //   return { ...prevState, data };
-              // });
-            }, 600);
+          new Promise((resolve, reject) => {
+            props.updateSettings(newData);
+            resolve();
           })
+      }}
+      localization={{
+        body: {
+          editRow: {
+            saveTooltip: "保存",
+            cancelTooltip: "キャンセル",
+            deleteText: "削除"
+          },
+          addTooltip: "追加",
+          deleteTooltip: "削除",
+          editTooltip: "編集"
+        }
       }}
     />
   );

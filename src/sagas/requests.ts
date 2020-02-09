@@ -16,54 +16,58 @@ export const getByAxios = async <T>(url: string, { headers = {}, params = {} } =
     });
 };
 
-export const postByAxios = async (
+export const postByAxios = async <T>(
   url: string,
   body: object,
   { headers = {}, params = {} } = {}
 ) => {
   return axiosInstance
-    .post(url, body, { headers, params })
-    .then((res: any) => {
+    .post<T>(url, body, { headers, params })
+    .then(res => {
       return { res };
     })
-    .catch((err: any) => {
+    .catch(err => {
       return { err };
     });
 };
 
-export const putByAxios = async (url: string, body: object, { headers = {}, params = {} } = {}) => {
-  return axiosInstance
-    .put(url, body, { headers, params })
-    .then((res: any) => {
-      return { res };
-    })
-    .catch((err: any) => {
-      return { err };
-    });
-};
-
-export const patchByAxios = async (
+export const putByAxios = async <T>(
   url: string,
   body: object,
   { headers = {}, params = {} } = {}
 ) => {
   return axiosInstance
-    .patch(url, body, { headers, params })
-    .then((res: any) => {
+    .put<T>(url, body, { headers, params })
+    .then(res => {
       return { res };
     })
-    .catch((err: any) => {
+    .catch(err => {
       return { err };
     });
 };
 
-export const deleteByAxios = async (url: string, { headers = {}, params = {} } = {}) => {
+export const patchByAxios = async <T>(
+  url: string,
+  body: object,
+  { headers = {}, params = {} } = {}
+) => {
   return axiosInstance
-    .delete(url, { headers, params })
-    .then((res: any) => {
+    .patch<T>(url, body, { headers, params })
+    .then(res => {
       return { res };
     })
-    .catch((err: any) => {
+    .catch(err => {
+      return { err };
+    });
+};
+
+export const deleteByAxios = async <T>(url: string, { headers = {}, params = {} } = {}) => {
+  return axiosInstance
+    .delete<T>(url, { headers, params })
+    .then(res => {
+      return { res };
+    })
+    .catch(err => {
       return { err };
     });
 };
