@@ -83,14 +83,18 @@ const initialState: StateTypes = {
   tabs: [
     { category: "ダッシュボード", pages: [{ id: "", name: "ダッシュボード" }] },
     {
-      category: "KB管理",
+      category: "KB",
       pages: [
         { id: "kbAdd", name: "追加" },
         { id: "kbEdit", name: "編集" },
         { id: "kbApply", name: "適用" }
-        // { id: "kbTest", name: "テスト" },
-        // { id: "kbTrain", name: "訓練" },
-        // { id: "kbPublish", name: "公開" }
+      ]
+    },
+    {
+      category: "マスタ",
+      pages: [
+        { id: "category", name: "QAカテゴリ" },
+        { id: "others", name: "その他" }
       ]
     },
     { category: "設定", pages: [{ id: "settings", name: "設定" }] }

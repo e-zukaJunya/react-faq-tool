@@ -29,7 +29,6 @@ const KbApply: React.FC = (props: any) => {
     return completed.has(step);
   };
 
-  // タブ用アンカー
   return (
     <div className="">
       <Stepper alternativeLabel nonLinear activeStep={activeStep}>
