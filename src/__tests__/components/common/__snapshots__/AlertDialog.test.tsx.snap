@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AlertDialog open 1`] = `
+<div
+  className=""
+>
+  <ForwardRef(WithStyles)
+    className=""
+    color="primary"
+    onClick={[Function]}
+    variant="outlined"
+  >
+    Open alert dialog
+  </ForwardRef(WithStyles)>
+  <ForwardRef(WithStyles)
+    aria-describedby="alert-dialog-description"
+    aria-labelledby="alert-dialog-title"
+    onClose={[Function]}
+    open={false}
+  >
+    <ForwardRef(WithStyles)
+      id="alert-dialog-title"
+    >
+      Use Google's location service?
+    </ForwardRef(WithStyles)>
+    <ForwardRef(WithStyles)>
+      <ForwardRef(WithStyles)
+        id="alert-dialog-description"
+      >
+        アラートダイアログ
+      </ForwardRef(WithStyles)>
+    </ForwardRef(WithStyles)>
+    <ForwardRef(WithStyles)>
+      <ForwardRef(WithStyles)
+        autoFocus={true}
+        color="primary"
+        onClick={[Function]}
+      >
+        閉じる
+      </ForwardRef(WithStyles)>
+    </ForwardRef(WithStyles)>
+  </ForwardRef(WithStyles)>
+</div>
+`;
+
+exports[`AlertDialog open 2`] = `
+<div
+  className=""
+>
+  <button
+    className="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary"
+    disabled={false}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onDragLeave={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    tabIndex={0}
+    type="button"
+  >
+    <span
+      className="MuiButton-label"
+    >
+      Open alert dialog
+    </span>
+  </button>
+</div>
+`;

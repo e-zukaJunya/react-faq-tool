@@ -1,8 +1,10 @@
 import axios from "axios";
 import { URLS } from "../resources/configs";
+import mockAdapter from './mock'
 
 const axiosInstance = axios.create({
-  baseURL: URLS.BASE
+  baseURL: URLS.BASE,
+  adapter: mockAdapter
 });
 
 export const getByAxios = async <T>(url: string, { headers = {}, params = {} } = {}) => {

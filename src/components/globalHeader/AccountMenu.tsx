@@ -39,10 +39,7 @@ const AccountMenu: React.FC = () => {
       {/* アカウントメニュー */}
       <Popper open={isOpen} anchorEl={anchorEl} role={undefined} transition disablePortal>
         {({ TransitionProps, placement }) => (
-          <Grow
-            {...TransitionProps}
-            style={{ transformOrigin: placement === "bottom" ? "center top" : "center bottom" }}
-          >
+          <Grow {...TransitionProps} style={{ transformOrigin: "center bottom" }}>
             <Paper>
               <ClickAwayListener onClickAway={handleMenuClose}>
                 <MenuList autoFocusItem={isOpen} id="menu-list-grow" onKeyDown={handleMenuClose}>

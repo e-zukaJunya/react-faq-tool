@@ -10,7 +10,7 @@ export const APP_CONFIGS = {
 
 //APIのURL
 export const URLS = {
-  BASE: APP_CONFIGS.IS_DEVELOP ? "http://localhost:3100/" : "",
+  BASE: APP_CONFIGS.IS_DEVELOP ? "http://localhost:3100/" : "https://honban/",
   SUB: "react-faq-tool",
   // SUB: "/react-faq-tool/",
   SETTINGS: "settings",
