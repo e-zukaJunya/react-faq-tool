@@ -6,8 +6,8 @@
     "start": "set REACT_APP_MY_ENV=dev && react-scripts start",
     "build": "set REACT_APP_MY_ENV=prod && react-scripts build",
     "build:d": "set REACT_APP_MY_ENV=dev && react-scripts build",
-    "test": "set REACT_APP_MY_ENV=dev && react-scripts test -u --coverage",
-    "test:check": "set REACT_APP_MY_ENV=dev && react-scripts test --coverage",
+    "test": "set REACT_APP_MY_ENV=dev && react-scripts test -u --coverage --watchAll=false",
+    "test:check": "set REACT_APP_MY_ENV=dev && react-scripts test --coverage --watchAll=false",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"

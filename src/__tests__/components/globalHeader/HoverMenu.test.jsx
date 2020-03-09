@@ -23,8 +23,6 @@ describe("AlertDialog", () => {
     ]
   };
 
-  beforeEach(() => {});
-
   test("mount", () => {
     const wrapper = mount(
       <MemoryRouter initialEntries={["/"]}>
