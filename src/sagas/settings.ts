@@ -7,11 +7,15 @@ import { URLS } from "../resources/configs";
 import { ERR_MESSAGES, ERR_TITLES } from "../resources/messages";
 import { getByAxios } from "./requests";
 
-function* getSettings() {
+export function* getSettings() {
   yield put(startProgress());
   // エラーはいろんな型があるためany
-  const { res, err }: { res: AxiosResponse<Setting[]>; err: any } = yield call(() =>
-    getByAxios<Setting[]>(URLS.SETTINGS)
+  // const { res, err }: { res: AxiosResponse<Setting[]>; err: any } = yield call(() =>
+  //   getByAxios<Setting[]>(URLS.SETTINGS)
+  // );
+  const { res, err }: { res: AxiosResponse<Setting[]>; err: any } = yield call(
+    getByAxios,
+    URLS.SETTINGS
   );
   yield put(endProgress());
   if (res && res.status === 200) {

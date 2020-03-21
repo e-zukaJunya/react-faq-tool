@@ -1,23 +1,34 @@
 import React from "react";
-// import { createShallow, createMount } from "@material-ui/core/test-utils";
 import { shallow, mount } from "enzyme";
 import CircularDeterminate from "components/common/CircularDeterminate";
-import renderer from "react-test-renderer";
+import renderer, { act } from "react-test-renderer";
 
 describe("renders CircularDeterminate", () => {
   beforeEach(() => {
+    jest.useFakeTimers();
+  });
+  afterEach(() => {
+    jest.useRealTimers();
   });
 
-  it("returns success info", async () => {
+  it("first", async () => {
     const wrapper = renderer.create(<CircularDeterminate />);
     expect(wrapper.toJSON()).toMatchSnapshot();
   });
+  // useEffectのsetInterval実行
+  it("after 1000ms", async () => {
+    const wrapper = renderer.create(<CircularDeterminate />);
+    await act(async () => {
+      // Progressが100になるルートを確かめるため3000
+      jest.runTimersToTime(3000);
+    });
+    expect(wrapper.toJSON()).toMatchSnapshot();
+  });
+  // useEffctのreturn実行
+  it("unmount", async () => {
+    const wrapper = renderer.create(<CircularDeterminate />);
+    wrapper.unmount();
+    // clearIntervalが何かNumber型の値を引数に呼ばれたことをチェック
+    expect(clearInterval).toHaveBeenCalledWith(expect.any(Number));
+  });
 });
-
-// import App from './App';
-// it('renders welcome message', () => {
-//   const wrapper = shallow(<App />);
-//   const welcome = <h2>Welcome to React</h2>;
-//   // expect(wrapper.contains(welcome)).toBe(true);
-//   expect(wrapper.contains(welcome)).toEqual(true);
-// });

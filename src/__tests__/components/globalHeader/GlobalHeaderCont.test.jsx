@@ -5,17 +5,21 @@ import React from "react";
 import { Provider } from "react-redux";
 import configureStore from "redux-mock-store";
 
-// コンポーネントのモック
 jest.mock("components/globalHeader/GlobalHeader", () => () => (
   <div id={"mockComponent"}>mockAccountMenuCom</div>
 ));
-
-const shallowWithStore = (component, store) => {
-  const context = {
-    store
+jest.mock("modules/common", () => {
+  return {
+    getMaster: jest.fn().mockImplementation(() => {
+      return {
+        type: "MOCK"
+      };
+    })
   };
-  return mount(<Provider store={store}>{component}</Provider>, { context });
-};
+});
+
+const shallowWithStore = (component, store) =>
+  mount(<Provider store={store}>{component}</Provider>);
 
 describe("GlobalHeader Container", () => {
   const state = {
@@ -44,9 +48,10 @@ describe("GlobalHeader Container", () => {
     expect(props.tabs).toEqual(state.common.tabs);
   });
 
-  it.skip("getMaster", () => {
+  it("getMaster", () => {
     const dom = wrapper.find("#mockComponent").parent();
     const props = dom.props();
-    expect(props.getMaster()).toEqual(getMaster());
+    props.getMaster();
+    expect(getMaster).toHaveBeenCalled();
   });
 });
